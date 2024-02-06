@@ -17,6 +17,9 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'no-unused-vars': 'off',
-    'react/jsx-no-target-blank': 'off'
+    'react/jsx-no-target-blank': 'off',
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
+    'no-useless-escape': 'off',
   },
 }
