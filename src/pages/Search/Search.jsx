@@ -42,9 +42,9 @@ const Search = () => {
                 <meta property="og:site_name" content="Kumanime" />
             </Helmet>
             { searchResult.status === "success" ?
-                (<main className="px-16 my-14">
+                (<main className="px-4 md:px-16 my-5 md:my-14">
                     <Title>Hasil pencarian "{value}"</Title>
-                    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 py-5 px-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 py-5 px-6">
                     {
                         searchResult.search_results.map((data, index) => {
                             return(
