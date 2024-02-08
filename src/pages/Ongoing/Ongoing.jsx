@@ -12,9 +12,13 @@ const Ongoing = () => {
     const [ongoingAnime, setOngoingAnime] = useState([]);
 
     useEffect(() => {
-        const ongoingAnime = async () => {
-            const result = await getOngoingAnime(page);
-            setOngoingAnime(result);
+        async function ongoingAnime() {
+            try {
+                const result = await getOngoingAnime(page);
+                setOngoingAnime(result);
+            } catch (error) {
+                console.log(error)
+            }
         }
 
         ongoingAnime()
@@ -24,6 +28,7 @@ const Ongoing = () => {
         <>
             <Helmet>
                 <title>Kumanime - Streaming Anime Sub Indo</title>
+                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                 <meta
                 name="description"
                 content="Nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN"
@@ -61,7 +66,7 @@ const Ongoing = () => {
                         })
                     }
                     </div>
-                    <Pagination currentPage={parseInt(page) || 1} totalPages={ongoingAnime.maxPage} />
+                    <Pagination currentPage={parseInt(page) || 1} totalPages={ongoingAnime.maxPage} destination="ongoing" />
                 </main>)
                 ) : <Loading />
             }

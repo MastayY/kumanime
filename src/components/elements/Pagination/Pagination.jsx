@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Pagination = ({ currentPage, totalPages }) => {
+const Pagination = ({ currentPage, totalPages, destination }) => {
     const renderPageNumbers = () => {
         const pageNumbers = [];
         const startPage = Math.max(1, currentPage - 2);
@@ -10,7 +10,7 @@ const Pagination = ({ currentPage, totalPages }) => {
             pageNumbers.push(
                 <a
                 key={i}
-                href={`/completed/page/${i}`}
+                href={`/${destination}/page/${i}`}
                 className={`text-white w-10 h-10 rounded-full grid place-items-center mx-1 ${
                     i === currentPage ? 'bg-kumanime text-white' : ''
                 }`}
@@ -26,13 +26,13 @@ const Pagination = ({ currentPage, totalPages }) => {
     return (
         <div className="flex justify-center items-center">
         <a
-            href="/completed/page/1"
+            href={`/${destination}/page/1`}
             className="text-white w-10 h-10 rounded-full grid place-items-center mx-1"
         >
             {'<<'}
         </a>
         <a
-            href={`/completed/page/${Math.max(1, currentPage - 1)}`}
+            href={`/${destination}/page/${Math.max(1, currentPage - 1)}`}
             className="text-white w-10 h-10 rounded-full grid place-items-center mx-1"
         >
             {'<'}
@@ -41,13 +41,13 @@ const Pagination = ({ currentPage, totalPages }) => {
         {renderPageNumbers()}
 
         <a
-            href={`/completed/page/${Math.min(totalPages, currentPage + 1)}`}
+            href={`/${destination}/page/${Math.min(totalPages, currentPage + 1)}`}
             className="text-white w-10 h-10 rounded-full grid place-items-center mx-1"
         >
             {'>'}
         </a>
         <a
-            href={`/completed/page/${totalPages}`}
+            href={`/${destination}/page/${totalPages}`}
             className="text-white w-10 h-10 rounded-full grid place-items-center mx-1"
         >
             {'>>'}

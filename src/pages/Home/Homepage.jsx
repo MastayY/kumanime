@@ -16,21 +16,36 @@ const Homepage = () => {
     const [newsAnimeData, setNewsAnimeData] = useState([]);
     
     useEffect(() => {
-        getLatestAnime((data) => {
-            setLatestAnimeData(data);
-        });
+        async function latestAnime() {
+            try {
+                const result = await getLatestAnime();
+                setLatestAnimeData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        latestAnime();
     }, [])
 
     useEffect(() => {
-        getAnimeNews((data) => {
-            setNewsAnimeData(data);
-        });
+        async function newsData() {
+            try {
+                const result = await getAnimeNews();
+                setNewsAnimeData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        newsData();
     }, [])
 
     return (
         <>
             <Helmet>
                 <title>Kumanime - Streaming Anime Sub Indo</title>
+                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                 <meta
                 name="description"
                 content="Nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN"
@@ -53,8 +68,11 @@ const Homepage = () => {
                     <Hero />
                     <div className="main gap-5 px-7 pt-10 grid lg:grid-cols-9 grid-cols-1 bg-bg-kumanime">
                         <div className="lg:col-span-6 lg:mx-5 lg:px-10">
-                            <div className="latest">
-                                <Title>Latest Release</Title>
+                            <div className="latest mb-5">
+                                <div className="flex justify-between items-center">
+                                    <Title>Update Terbaru</Title>
+                                    <a href="/ongoing/page/1"className="text-white font-semibold transition-all hover:text-kumanime font-poppins text-xs md:text-sm">Lihat Semua {">>"}</a>
+                                </div>
                                 <Cards>
                                     {
                                         latestAnimeData.home.on_going.map((data, index) => {
@@ -74,7 +92,10 @@ const Homepage = () => {
                             </div>
 
                             <div>
-                                <Title>Completed Anime</Title>
+                                <div className="flex justify-between items-center">
+                                    <Title>Anime Selesai</Title>
+                                    <a href="/completed/page/1" className="text-white font-semibold transition-all hover:text-kumanime font-poppins text-xs md:text-sm">Lihat Semua {">>"}</a>
+                                </div>
                                 <Slider>
                                     {
                                         latestAnimeData.home.complete.map((data, index) => {
@@ -96,7 +117,7 @@ const Homepage = () => {
                         </div>
                         
                         <div className="lg:col-span-3">
-                            <Title>Anime News</Title>
+                            <Title>Berita</Title>
                             <div className="bg-bg-kumanime-semi">
                                 <Aside>
                                     {

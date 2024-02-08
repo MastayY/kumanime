@@ -12,9 +12,13 @@ const Completed = () => {
     const [completedAnime, setCompletedAnime] = useState([]);
 
     useEffect(() => {
-        const completedAnime = async () => {
-            const result = await getCompletedAnime(page);
-            setCompletedAnime(result);
+        async function completedAnime() {
+            try {
+                const result = await getCompletedAnime(page);
+                setCompletedAnime(result);
+            } catch (error) {
+                console.log(error)
+            }
         }
 
         completedAnime()
@@ -24,6 +28,7 @@ const Completed = () => {
         <>
             <Helmet>
                 <title>Kumanime - Streaming Anime Sub Indo</title>
+                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                 <meta
                 name="description"
                 content="Nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN"
@@ -61,7 +66,7 @@ const Completed = () => {
                         })
                     }
                     </div>
-                    <Pagination currentPage={parseInt(page) || 1} totalPages={completedAnime.maxPage} />
+                    <Pagination currentPage={parseInt(page) || 1} totalPages={completedAnime.maxPage} destination="completed" />
                 </main>)
                 ) : <Loading />
             }

@@ -19,9 +19,16 @@ const Anime = () => {
     };
 
     useEffect(() => {
-        getAnimeDetails(id, (data) => {
-            setAnimeDetails(data);
-        })
+        async function animeDetails() {
+            try {
+                const result = await getAnimeDetails(id);
+                setAnimeDetails(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        animeDetails()
     }, [id])
 
     return (
@@ -30,6 +37,7 @@ const Anime = () => {
                 <>
                     <Helmet>
                         <title>Nonton {animeDetails.title}</title>
+                        <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                         <meta
                         name="description"
                         content="Tempat nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN tanpa gangguan banner iklan yang banyak dan mengganggu."
@@ -48,9 +56,9 @@ const Anime = () => {
                         <meta property="og:site_name" content="Kumanime" />
                     </Helmet>
                     <div className="pb-10 pt-3 bg-bg-kumanime text-white">
-                        <div className="px-16 grid relative lg:grid-cols-8 gap-4 place-content-center place-items-center bg-cover">
+                        <div className="px-16 grid relative lg:grid-cols-8 gap-4 place-content-center place-items-center bg-cover mb-10">
                             <div className="absolute blur-[20px] opacity-35 bg-cover w-full h-full bg-center" style={{backgroundImage: `url(${animeDetails.thumb})`}}></div>
-                            <div className="anime-detail grid gap-5 md:grid-cols-5 mb-16 lg:col-span-6 py-16 relative">
+                            <div className="anime-detail grid gap-5 md:grid-cols-5 md:mb-16 lg:col-span-6 py-16 relative">
                                 <div className="md:col-span-2 lg:col-span-1 md:block flex justify-center">
                                     <img src={animeDetails.thumb} alt={animeDetails.title} width="202" height="277" />
                                 </div>

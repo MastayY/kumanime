@@ -20,6 +20,10 @@ const Slider = ({ children }) => {
                     slidesPerView: 4,
                 },
             },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
         });
 
         const handleResize = () => {
@@ -36,7 +40,7 @@ const Slider = ({ children }) => {
     }, []); // Empty dependency array to run only once after the initial render
 
     return (
-        <div className="container mx-auto my-8 overflow-hidden">
+        <div className="container mx-auto my-5 overflow-hidden relative">
             <div className="swiper-container" ref={sliderRef}>
                 <div className="swiper-wrapper">
                     {children}
