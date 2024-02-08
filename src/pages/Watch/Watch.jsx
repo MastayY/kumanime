@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getAnimeNews, getEpisodeDetails, getOngoingAnime } from "../../Hooks/Api";
 import IframeVideo from "../../components/fragments/IframeVideo/IframeVideo";
-import Navbar from "../../components/layouts/Navbar/Navbar";
 import Aside from "../../components/fragments/Aside/Aside";
 import AsideCard from "../../components/elements/AsideCard/AsideCard";
 import Title from "../../components/elements/Title/Title";
@@ -19,32 +18,51 @@ const Watch = () => {
     const [ongoingAnime, setOngoingAnime] = useState([]);
 
     useEffect(() => {
-        const ongoingAnime = async () => {
-            const result = await getOngoingAnime(1);
-            setOngoingAnime(result);
+        async function ongoingAnime() {
+            try {
+                const result = await getOngoingAnime(1);
+                setOngoingAnime(result);
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         ongoingAnime()
     }, [])
 
     useEffect(() => {
-        getEpisodeDetails(slug, (data) => {
-            setEpsData(data);
-        })
+        async function epsDetails() {
+            try {
+                const result = await getEpisodeDetails(slug);
+                setEpsData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        epsDetails()
     }, [slug])
 
     useEffect(() => {
-        getAnimeNews((data) => {
-            setNewsAnimeData(data);
-        });
+        async function animeNews() {
+            try {
+                const result = await getAnimeNews();
+                setNewsAnimeData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        animeNews()
     }, [])
 
     return (
         <>
-            {(epsData && newsAnimeData) ? (
+            {(epsData && newsAnimeData && ongoingAnime.status === "success") ? (
                 <>
                 <Helmet>
                     <title>Nonton {epsData.title}</title>
+                    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                     <meta
                     name="description"
                     content={`Watch your favorite anime ${epsData.title} with subtitles in Indonesian.`}
@@ -79,7 +97,7 @@ const Watch = () => {
                     content="https://raw.githubusercontent.com/LuckyIndraEfendi/KyoukaLive/main/public/logo.svg"
                     />
                 </Helmet>
-                <div className="grid grid-cols-1 lg:grid-cols-10 gap-7 p-7 bg-bg-kumanime text-white">
+                <div className="grid grid-cols-1 lg:grid-cols-10 gap-7 py-7 px-3 md:px-7 bg-bg-kumanime text-white">
                     <div className="lg:col-span-7">
                         <div>
                             <h1 className="font-bold text-xl md:text-3xl py-3 px-3 mb-3">Nonton {epsData.title}</h1>
@@ -92,7 +110,7 @@ const Watch = () => {
                             />
                         </div>
                         <div className="my-6">
-                            <Title>Rekomendasi Untukmu</Title>
+                            <Title>Rekomendasi Anime</Title>
                             <Slider>
                                 {
                                     ongoingAnime.animeList.map((data, index) => {
@@ -114,7 +132,7 @@ const Watch = () => {
                         </div>
                     </div>
                     <div className="lg:col-span-3 mt-0 lg:mt-16 px-3">
-                        <Title>Anime News</Title>
+                        <Title>Berita</Title>
                         <div className="bg-bg-kumanime-semi">
                             <Aside>
                                 {

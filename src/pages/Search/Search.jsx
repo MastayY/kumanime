@@ -24,6 +24,7 @@ const Search = () => {
         <>
             <Helmet>
                 <title>Search Result For {value}</title>
+                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                 <meta
                 name="description"
                 content="Nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN"

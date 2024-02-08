@@ -1,45 +1,45 @@
 import axios from "axios";
 
-export const getLatestAnime = async (callback) => {
+export const getLatestAnime = async () => {
     try {
         const response = await axios.get("https://kumanimeapi.vercel.app/api/home");
-        callback(response.data);
+        return response.data;
     } catch (error) {
         return error.message;
     }
 }
 
-export const getAnimeNews = async (callback) => {
+export const getAnimeNews = async () => {
     try {
         const response = await axios.get("https://consumet-api-pink.vercel.app/news/ann/recent-feeds");
-        callback(response.data);
+        return response.data;
     } catch (error) {
         return error.message;
     }
 }
 
-export const getAnimeNewsDetail = async (id, callback) => {
+export const getAnimeNewsDetail = async (id) => {
     try {
         const response = await axios.get("https://consumet-api-pink.vercel.app/news/ann/info?id=" + id);
-        callback(response.data);
+        return response.data;
     } catch (error) {
         return error.message;
     }
 }
 
-export const getEpisodeDetails = async (slug, callback) => {
+export const getEpisodeDetails = async (slug) => {
     try {
         const response = await axios.get(`https://kumanimeapi.vercel.app/api/episode/${slug}`);
-        callback(response.data);
+        return response.data;
     } catch (error) {
         return error.message;
     }
 }
 
-export const getAnimeDetails = async (slug, callback) => {
+export const getAnimeDetails = async (slug) => {
     try {
         const response = await axios.get(`https://kumanimeapi.vercel.app/api/anime/${slug}`);
-        callback(response.data);
+        return response.data;
     } catch (error) {
         return error.message;
     }

@@ -1,10 +1,15 @@
 import { Link, useRouteError } from "react-router-dom";
 import Footer from "../../components/layouts/Footer/Footer";
 import Navbar from "../../components/layouts/Navbar/Navbar";
+import { Helmet } from "react-helmet";
 
 const Error = () => {
     return (
         <>
+            <Helmet>
+                <title>Kumanime - Error</title>
+                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+            </Helmet>
             <Navbar />
             <div className="w-full h-[80vh] grid place-items-center text-white font-poppins">
                 <div className="text-center">

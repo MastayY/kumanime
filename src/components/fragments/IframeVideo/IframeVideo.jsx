@@ -9,9 +9,16 @@ const IframeVideo = (props) => {
     const [animeData, setAnimeData] = useState();
 
     useEffect(() => {
-        getAnimeDetails(id, (data) => {
-            setAnimeData(data);
-        })
+        async function animeDetailsGet() {
+            try {
+                const result = await getAnimeDetails(id);
+                setAnimeData(result);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        animeDetailsGet();
     }, [id])
 
     return(
