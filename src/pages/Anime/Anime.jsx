@@ -37,7 +37,6 @@ const Anime = () => {
                 <>
                     <Helmet>
                         <title>Nonton {animeDetails.title}</title>
-                        <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                         <meta
                         name="description"
                         content="Tempat nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN tanpa gangguan banner iklan yang banyak dan mengganggu."
@@ -54,6 +53,12 @@ const Anime = () => {
                         <meta property="og:locale" content="id_ID" />
                         <meta property="og:type" content="website" />
                         <meta property="og:site_name" content="Kumanime" />
+                        <meta property="og:image" content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png" />
+                        <meta name="twitter:description" content="Nonton Anime Online Sub Indo Gratis di KUMANIME.FUN" />
+                        <meta
+                        name="twitter:image"
+                        content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png"
+                        />
                     </Helmet>
                     <div className="pb-10 pt-3 bg-bg-kumanime text-white">
                         <div className="px-16 grid relative lg:grid-cols-8 gap-4 place-content-center place-items-center bg-cover mb-10">

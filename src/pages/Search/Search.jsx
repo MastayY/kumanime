@@ -24,7 +24,6 @@ const Search = () => {
         <>
             <Helmet>
                 <title>Search Result For {value}</title>
-                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                 <meta
                 name="description"
                 content="Nonton anime subtitle Indonesia secara gratis di KUMANIME.FUN"
@@ -41,6 +40,12 @@ const Search = () => {
                 <meta property="og:locale" content="id_ID" />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="Kumanime" />
+                <meta property="og:image" content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png" />
+                <meta name="twitter:description" content="Nonton Anime Online Sub Indo Gratis di KUMANIME.FUN" />
+                <meta
+                name="twitter:image"
+                content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png"
+                />
             </Helmet>
             { searchResult.status === "success" ?
                 (<main className="px-4 md:px-16 my-5 md:my-14">

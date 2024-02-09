@@ -1,8 +1,28 @@
-# React + Vite
+# Kumanime - Streaming Anime Sub Indo Gratis 🍿🐨
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Selamat datang di Kumanime, tempatnya nonton anime kesukaanmu dengan mudah dan nyaman! 🎉
 
-Currently, two official plugins are available:
+## Pengenalan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Kumanime adalah platform streaming anime subtitle Indonesia gratis yang bersumber dari [Otakudesu-API](https://github.com/rakarmp/unofficial-otakudesu-api) dan dibuat menggunakan [ReactJS](https://react.dev) dan [TailwindCSS](https://tailwindcss.com).
+
+## Preview
+
+<img src="https://raw.githubusercontent.com/MastayY/kumanime/main/preview.png" />
+
+## Fitur
+
+- **Tanpa Banner Iklan Yang Mengganggu:** Kumanime merupakan website streaming anime tanpa banner iklan yang menganggu. Satu-satunya iklan hanyalah di streaming yang dimana itu bersumber dari API dan tidak bisa dihilangkan.
+
+- **User Friendly Interface:** UI yang bersih membuat navigasi di Kumanime menjadi lebih mudah dan santai. Tidak ada lagi kebingungan ketika akan menonton anime!.
+
+- **Responsive Design:** Kumanime siap menemanimu di berbagai perangkat.
+
+
+## Credits
+
+[Otakudesu-API](https://github.com/rakarmp/unofficial-otakudesu-api)
+
+## Support Me
+
+[Saweria](https://saweria.co/Mastay)
