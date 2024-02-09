@@ -8,7 +8,6 @@ const Error = () => {
         <>
             <Helmet>
                 <title>Kumanime - Error</title>
-                <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
             </Helmet>
             <Navbar />
             <div className="w-full h-[80vh] grid place-items-center text-white font-poppins">

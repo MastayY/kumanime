@@ -78,7 +78,7 @@ const Watch = () => {
                     />
                     <meta
                     property="og:image"
-                    content="https://raw.githubusercontent.com/LuckyIndraEfendi/KyoukaLive/main/public/logo.svg"
+                    content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png"
                     />
                     <meta property="og:locale" content="id_ID" />
                     <meta property="og:type" content="website" />
@@ -94,7 +94,7 @@ const Watch = () => {
                     />
                     <meta
                     name="twitter:image"
-                    content="https://raw.githubusercontent.com/LuckyIndraEfendi/KyoukaLive/main/public/logo.svg"
+                    content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png"
                     />
                 </Helmet>
                 <div className="grid grid-cols-1 lg:grid-cols-10 gap-7 py-7 px-3 md:px-7 bg-bg-kumanime text-white">
