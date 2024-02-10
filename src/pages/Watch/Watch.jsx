@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getAnimeNews, getEpisodeDetails, getOngoingAnime } from "../../Hooks/Api";
+import { getAnimeDetails, getAnimeNews, getEpisodeDetails, getOngoingAnime } from "../../Hooks/Api";
 import IframeVideo from "../../components/fragments/IframeVideo/IframeVideo";
 import Aside from "../../components/fragments/Aside/Aside";
 import AsideCard from "../../components/elements/AsideCard/AsideCard";
@@ -9,6 +9,8 @@ import { Helmet } from "react-helmet";
 import Loading from "../../components/layouts/Loading/Loading";
 import Slider from "../../components/layouts/Slider/Slider";
 import Card from "../../components/elements/Card/Card";
+import Navigation from "../../components/elements/Navigation/Navigation";
+import DetailCard from "../../components/elements/DetailCard/DetailCard";
 
 const Watch = () => {
     const {slug} = useParams();
@@ -16,6 +18,8 @@ const Watch = () => {
     const [epsData, setEpsData] = useState();
     const [newsAnimeData, setNewsAnimeData] = useState([]);
     const [ongoingAnime, setOngoingAnime] = useState([]);
+    const [streamQuality, setStreamQuality] = useState('sd');
+    const [animeData, setAnimeData] = useState();
 
     useEffect(() => {
         async function ongoingAnime() {
@@ -34,7 +38,9 @@ const Watch = () => {
         async function epsDetails() {
             try {
                 const result = await getEpisodeDetails(slug);
+                const animeDetailsResult = await getAnimeDetails(result.id);
                 setEpsData(result);
+                setAnimeData(animeDetailsResult);
             } catch (error) {
                 console.log(error);
             }
@@ -58,7 +64,7 @@ const Watch = () => {
 
     return (
         <>
-            {(epsData && newsAnimeData && ongoingAnime.status === "success") ? (
+            {(epsData && animeData && newsAnimeData && ongoingAnime.status === "success") ? (
                 <>
                 <Helmet>
                     <title>Nonton {epsData.title}</title>
@@ -103,10 +109,24 @@ const Watch = () => {
                             <h1 className="font-bold text-xl md:text-3xl py-3 px-3 mb-3">Nonton {epsData.title}</h1>
                             <IframeVideo 
                                 title={epsData.title}
-                                id={epsData.id}
-                                nextSlug={epsData.next_eps_slug}
-                                prevSlug={epsData.prev_eps_slug}
                                 streamUrl={epsData.stream_link}
+                                quality={streamQuality}
+                            />
+                            <Navigation 
+                                prevSlug={epsData.prev_eps_slug}
+                                nextSlug={epsData.next_eps_slug}
+                                slug={epsData.id}
+                            />
+                            <div className="my-3 p-2 text-sm md:text-base border-kumanime border flex gap-2 justify-center font-poppins font-semibold items-center">
+                                <p>Kualitas : </p>
+                                <button className={streamQuality === 'sd' ? `py-1 px-2 rounded-sm bg-kumanime` : `py-1 px-2 rounded-sm`} onClick={() => setStreamQuality('sd')}>SD 480p</button>
+                                <button className={streamQuality === 'hd' ? `py-1 px-2 rounded-sm bg-kumanime` : `py-1 px-2 rounded-sm`} onClick={() => setStreamQuality('hd')}>HD 720p</button>
+                            </div>
+                            <DetailCard
+                                title={animeData.title}
+                                poster={animeData?.thumb}
+                                synopsis={animeData?.synopsis}
+                                slug={animeData.id}
                             />
                         </div>
                         <div className="my-6">
