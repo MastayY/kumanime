@@ -1,5 +1,5 @@
 {
-    "rewrites": [
-        {"source": "/(?!.*\\.xml$)(.*)", "destination": "/$1"}
+    "rewrites":  [
+        {"source": "/(.*)", "destination": "/"}
     ]
 }
