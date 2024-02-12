@@ -83,12 +83,12 @@ const Navbar = () => {
                             >
                                 Ongoing
                             </a>
-                            {/* <a
-                                href="/schedule"
+                            <a
+                                href="/watchlist"
                                 className="px-3 py-2 rounded-md transition-all duration-200 text-base font-medium text-gray-200 hover:text-white hover:bg-kumanime"
                             >
-                                Jadwal
-                            </a> */}
+                                Watchlist
+                            </a>
                         </nav>
 
                         <div className="hidden md:flex items-center">
@@ -163,10 +163,10 @@ const Navbar = () => {
                                         href="/ongoing/page/1"
                                         className="-m-1 p-3 rounded-md hover:bg-bg-kumanime-2 transition-all text-sm md:text-base font-medium text-white"
                                     >Ongoing Anime</a>
-                                    {/* <a
-                                        href="/schedule"
+                                    <a
+                                        href="/watchlist"
                                         className="-m-1 p-3 rounded-md hover:bg-bg-kumanime-2 transition-all text-sm md:text-base font-medium text-white"
-                                    >Jadwal</a> */}
+                                    >Watchlist</a>
                                 </nav>
                             </div>
                         </div>

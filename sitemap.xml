@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://kumanime.fun/</loc>
+        <lastmod>2024-02-12</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+    <url>
+        <loc>https://kumanime.fun/ongoing/page/1</loc>
+        <lastmod>2024-02-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://kumanime.fun/completed/page/1</loc>
+        <lastmod>2024-02-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://kumanime.fun/watchlist</loc>
+        <lastmod>2024-02-12</lastmod>
+        <changefreq>never</changefreq>
+        <priority>0.7</priority>
+    </url>
+</urlset>
