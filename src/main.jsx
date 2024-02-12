@@ -10,6 +10,7 @@ import Search from './pages/Search/Search.jsx'
 import Completed from './pages/Completed/Completed.jsx'
 import Ongoing from './pages/Ongoing/Ongoing.jsx'
 import Error from './pages/Error/Error.jsx'
+import Watchlist from './pages/Watchlist/Watchlist.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Homepage />
+        element: <Homepage />,
+      },
+      {
+        path: '/watchlist',
+        element: <Watchlist />
       },
       {
         path: '/anime/:id',

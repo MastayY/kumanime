@@ -71,29 +71,29 @@ const Watch = () => {
                     <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
                     <meta
                     name="description"
-                    content={`Watch your favorite anime ${epsData.title} with subtitles in Indonesian.`}
+                    content={`Nonton Anime ${epsData.title} - Kumanime`}
                     />
                     <meta name="robots" content="index, follow" />
                     <meta
                     property="og:title"
-                    content={`Kumanime - Watch Anime ${epsData.title}`}
+                    content={`Nonton ${epsData.title} - Kumanime`}
                     />
                     <meta
                     property="og:description"
-                    content={`Watch your favorite anime ${epsData.title}  with subtitles in Indonesian.`}
+                    content={`Nonton Anime ${epsData.title} - Kumanime`}
                     />
                     <meta
                     property="og:image"
                     content="https://raw.githubusercontent.com/MastayY/kumanime/main/public/logo.png"
                     />
                     <meta property="og:locale" content="id_ID" />
-                    <meta property="og:type" content="website" />
+                    <meta property="og:type" content="article" />
                     <meta property="og:site_name" content="Kumanime.FUN" />
                     <meta name="twitter:card" content="summary_large_image" />
-                    <meta
-                    name="twitter:title"
-                    content="Kumanime - Streaming Anime Sub Indo"
-                    />
+                    <meta name="googlebot" content="index, follow" />
+                    <meta name="twitter:title" content={`Nonton ${epsData.title} - Kumanime`} />
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="keywords" content="kumanime, otakudesu, kuronime, kuramanime, web streaming anime, moenime, moenime id, moenime list, moe anime, anime batch indonesia, anime batch sub indo, animebatch sub indo, anime batch terbaru, download anime batch subtitle indonesia, situs download anime, anime sub indo, download anime sub indo, download anime subtitle indonesia, download anime terbaru, download anime bd, download anime movie, download anime batch, download anime batch sub indo, download anime batch subtitle indonesia terlengkap, streaming anime, streaming anime sub indo, streaming anime subtitle indonesia, streaming anime sub indo lengkap" />
                     <meta
                     name="twitter:description"
                     content="Nonton Anime Online Sub Indo Gratis di KUMANIME.FUN"
@@ -117,10 +117,13 @@ const Watch = () => {
                                 nextSlug={epsData.next_eps_slug}
                                 slug={epsData.id}
                             />
-                            <div className="my-3 p-2 text-sm md:text-base border-kumanime border flex gap-2 justify-center font-poppins font-semibold items-center">
-                                <p>Kualitas : </p>
-                                <button className={streamQuality === 'sd' ? `py-1 px-2 rounded-sm bg-kumanime` : `py-1 px-2 rounded-sm`} onClick={() => setStreamQuality('sd')}>SD 480p</button>
-                                <button className={streamQuality === 'hd' ? `py-1 px-2 rounded-sm bg-kumanime` : `py-1 px-2 rounded-sm`} onClick={() => setStreamQuality('hd')}>HD 720p</button>
+                            <div className="my-3 p-2 text-sm md:text-base border-kumanime border font-poppins">
+                                <div className="flex gap-2 font-semibold items-center justify-center ">
+                                    <p>Kualitas : </p>
+                                    <button className={streamQuality === 'sd' ? `py-1 px-2 rounded-sm bg-kumanime` : `py-1 px-2 rounded-sm`} onClick={() => setStreamQuality('sd')}>SD 480p</button>
+                                    <button className={streamQuality === 'hd' ? `py-1 px-2 rounded-sm bg-kumanime` : `py-1 px-2 rounded-sm`} onClick={() => setStreamQuality('hd')}>HD 720p</button>
+                                </div>
+                                <p className="text-center text-[11px] mt-2">*Kualitas HD tidak selalu ada karena limitasi akses ke server sumber</p>
                             </div>
                             <DetailCard
                                 title={animeData.title}

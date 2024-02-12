@@ -1,8 +1,3 @@
-import { useEffect, useState } from "react";
-import DetailCard from "../../elements/DetailCard/DetailCard";
-import Navigation from "../../elements/Navigation/Navigation";
-import { getAnimeDetails } from "../../../Hooks/Api";
-
 const IframeVideo = (props) => {
     const { streamUrl, quality } = props;
 
