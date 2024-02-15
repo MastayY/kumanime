@@ -18,7 +18,6 @@ const Watchlist = () => {
                 }));
                 setBookmarks(updatedBookmarks);
                 setIsLoading(false);
-                console.log(updatedBookmarks);
             } catch (error) {
                 console.log(error);
             }
