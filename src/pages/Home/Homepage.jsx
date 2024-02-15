@@ -4,7 +4,7 @@ import Card from "../../components/elements/Card/Card";
 import Aside from "../../components/fragments/Aside/Aside";
 import Hero from "../../components/layouts/Hero/Hero"
 import Cards from "../../components/layouts/Cards/Cards";
-import { getAnimeNews, getLatestAnime } from "../../Hooks/Api";
+import { getAnimeDetails, getAnimeNews, getLatestAnime } from "../../Hooks/Api";
 import Title from "../../components/elements/Title/Title";
 import Slider from "../../components/layouts/Slider/Slider";
 import Loading from "../../components/layouts/Loading/Loading";
@@ -14,6 +14,29 @@ const Homepage = () => {
 
     const [latestAnimeData, setLatestAnimeData] = useState([]);
     const [newsAnimeData, setNewsAnimeData] = useState([]);
+    const [history, setHistory] = useState([]);
+
+    const isHistoryExist = localStorage.getItem("history");
+
+    useEffect(() => {
+        async function getBookmarkData() {
+            try {
+                const result = JSON.parse(localStorage.getItem('history') || '[]');
+                const updatedHistories = await Promise.all(result.map(async (history) => {
+                    const animeDetails = await getAnimeDetails(history.mainSlug);
+                    return {...animeDetails, epsSlug: history.epsSlug, episode: history.episode};
+                }));
+                setHistory(updatedHistories);
+                console.log(updatedHistories);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        if(isHistoryExist) {
+            getBookmarkData();
+        }
+    }, [isHistoryExist])
     
     useEffect(() => {
         async function latestAnime() {
@@ -77,6 +100,26 @@ const Homepage = () => {
                     <Hero />
                     <div className="main gap-5 px-7 pt-10 grid lg:grid-cols-9 grid-cols-1 bg-bg-kumanime">
                         <div className="lg:col-span-6 lg:mx-5 lg:px-10">
+                            <div className={!isHistoryExist ? "hidden" : ""}>
+                                <Title>Lanjut Nonton</Title>
+                                <Slider>
+                                    {
+                                        history.map((data, index) => {
+                                            return(
+                                                <div className="swiper-slide" key={index}>
+                                                    <Card
+                                                        imgUrl={data.thumb}
+                                                        title={data.title}
+                                                        href={`/watch/${data.epsSlug}`}
+                                                        rating={`☆ ${data.score || "0"}`}
+                                                        episode={`Episode ${data.episode}`}
+                                                    />
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </Slider>
+                            </div>
                             <div className="latest mb-5">
                                 <div className="flex justify-between items-center">
                                     <Title>Update Terbaru</Title>

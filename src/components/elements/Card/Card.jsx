@@ -28,7 +28,7 @@ const Card = (props) => {
                             </div> : ""
                         
                         }
-                        <p className="font-bold text-ellipsis overflow-hidden w-full h-[43px] line-clamp-2 leading[1.3em] text-sm hover:text-kumanime transition-all duration-200">{title}</p>
+                        <p className="font-bold text-ellipsis overflow-hidden w-full h-[42px] line-clamp-2 leading[1.3em] text-sm hover:text-kumanime transition-all duration-200">{title}</p>
                     </div>
                 </a>
             </div>

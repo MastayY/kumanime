@@ -8,6 +8,7 @@ import AnimeDetail from "../../components/fragments/AnimeDetail/AnimeDetail";
 import TextDetail from "../../components/elements/TextDetail/TextDetail";
 import { Helmet } from "react-helmet";
 import BookmarkButton from "../../components/fragments/BookmarkButton/BookmarkButton";
+import { addToHistory } from "../../utils";
 
 const Anime = () => {
 
@@ -113,7 +114,7 @@ const Anime = () => {
                                     animeDetails.episode_list.map((data, index) => {
                                         return(
                                             <li key={index}>
-                                                <a href={`/watch/${data.id}`} className="block p-2 hover:bg-bg-kumanime-semi transition-all font-semibold">{data.title}</a>
+                                                <a href={`/watch/${data.id}`} className="block p-2 hover:bg-bg-kumanime-semi transition-all font-semibold" onClick={() => addToHistory(id, data.id, data.title.match(/Episode (\d+)/)[1])}>{data.title}</a>
                                             </li>
                                         )
                                     })

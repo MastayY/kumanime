@@ -129,7 +129,7 @@ const Watch = () => {
                                 title={animeData.title}
                                 poster={animeData?.thumb}
                                 synopsis={animeData?.synopsis}
-                                slug={animeData.id}
+                                slug={animeData.anime_id}
                             />
                         </div>
                         <div className="my-6">
